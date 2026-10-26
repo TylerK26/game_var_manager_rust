@@ -2,6 +2,7 @@ mod game_management;
 
 use game_management::Game;
 use game_management::get_game_name;
+use game_management::get_game_image_url;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -13,6 +14,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         vars: vec!["1".to_string(), "2".to_string(), "3".to_string()]
     };
     let name_test = get_game_name(620980).await?;
-    println!("{}", name_test);
+    let image_url = get_game_image_url(620980);
+    println!("{}", image_url);
     Ok(())
 }

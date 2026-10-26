@@ -27,3 +27,7 @@ pub async fn get_game_name(game_id: u32) -> Result<String, Box<dyn std::error::E
         .ok_or("Could not get game name, ID likely invalid")?
         .to_string())
 }
+
+pub fn get_game_image_url(game_id: u32) -> String {
+    format!("https://steamcdn-a.akamaihd.net/steam/apps/{}/library_600x900_2x.jpg", game_id)
+}
