@@ -1,7 +1,8 @@
 use std::fmt;
-use serde_json::Value;
+use serde_json::{Value, Map};
 use std::path::Path;
-
+use new_vdf_parser;
+use std::collections::HashMap;
 pub struct Game {
     pub title: String,
     pub id: u32,
@@ -39,4 +40,13 @@ pub async fn get_game_ids(compat_data_path: &Path) -> Result<Vec<u32>, Box<dyn s
         game_ids.push(item?.file_name().to_str().unwrap().parse()?);
     }
     Ok(game_ids)
+}
+
+pub async fn get_game_env_vars(game_ids: Vec<u32>, local_config_path: &Path) -> Result<Vec<(String, String)>, Box<dyn std::error::Error>> {
+    let mut map_of_vars = HashMap::new();
+    let local_config = local_config_path.join("localconfig.vdf");
+    let vdf_reader = new_vdf_parser::reader::Reader::new(&[]);
+    for i in game_ids {
+
+    }
 }
